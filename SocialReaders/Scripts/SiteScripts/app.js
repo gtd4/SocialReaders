@@ -61,11 +61,13 @@
                         login.isFBLoggedIn = true;
                         
                     });
-                    FB.api('/me/books.reads?fields=books,progress', function (response) {
-                        console.log(response);
-                        login.$apply(function () {
-                            login.books = response.data;
-                        });
+                    FB.api('/me/books.reads', function (response) {
+                        if (response && !response.error) {
+                            console.log(response);
+                            login.$apply(function () {
+                                login.books = response.data;
+                            });
+                        }
                         
                     });
                 } else {
