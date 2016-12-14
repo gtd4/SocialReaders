@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="Content/bootstrap.css" />
+</head>
+<body ng-app="socialReaders">
+    <script src="Scripts/SiteScripts/Facebook.js"></script>
+    <!--
+      Below we include the Login Button social plugin. This button uses
+      the JavaScript SDK to present a graphical Login button that triggers
+      the FB.login() function when clicked.
+    -->
+    <div class="container">
+        <div ng-controller="LoginController">
+            <button class="btn btn-default" ng-hide="isFBLoggedIn" ng-click="fbLogin()">Login</button>
+            <button class="btn btn-danger" ng-hide="!isFBLoggedIn" ng-click="fbLogout()">Logout</button>
+            <p>{{isFBLoggedIn}}</p>
+            <p>{{accessToken}}</p>
+
+            <div id="status">
+            </div>
+            <div>
+                <ul>
+                    <li ng-repeat="book in books">
+                        {{book.data.book.title}}
+                        {{book.data.book.image}}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+
+    </div>
+    <script type="text/javascript" src="scripts/angular.js"></script>
+    <script type="text/javascript" src="Scripts/SiteScripts/app.js"></script>
+    <script type="text/javascript" src="Scripts/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="Scripts/bootstrap.js"></script>
+    <!--<script data-main="scripts/siteScripts/main" src="scripts/require.js"></script>-->
+
+</body>
+</html>
